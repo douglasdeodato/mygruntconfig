@@ -11,6 +11,7 @@
 			,'grunt-contrib-watch'
 			,'grunt-contrib-concat'
 			,'grunt-contrib-uglify'
+			,'grunt-contrib-jasmine'
 	];
 
 		//concat ===============================
@@ -62,8 +63,8 @@
 
 	//Register custom tasks ===============================
 	grunt.registerTask('default',['dev']);
-	grunt.registerTask('dev',['jshint:dev', 'concat:dev']);
-	grunt.registerTask('dist',['jshint:dist', 'concat:dev', 'uglify']);
+	grunt.registerTask('dev',['jshint:dev','jasmine', 'concat:dev']);
+	grunt.registerTask('dist',['jshint:dist','jasmine', 'concat:dev', 'uglify']);
 
 
 	//General setup ===============================
