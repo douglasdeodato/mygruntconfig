@@ -38,6 +38,17 @@
 		}}
 
 
+		//jasmine ===============================
+		var jasmine
+		config.jasmine = jasmine = {};
+		jasmine.calc = {
+			scr:"calc/calc.js"
+			,options {
+				specs: "spec/calc.spec.js"
+			}
+		};
+
+
 	config.jshint = jshint ={};
 
 
