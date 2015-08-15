@@ -1,0 +1,19 @@
+{
+  "name": "mygruntconfig",
+  "version": "1.0.0",
+  "description": "my grunt config",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/douglasdeodato/mygruntconfig.git"
+  },
+  "author": "douglas deodato",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/douglasdeodato/mygruntconfig/issues"
+  },
+  "homepage": "https://github.com/douglasdeodato/mygruntconfig"
+}
