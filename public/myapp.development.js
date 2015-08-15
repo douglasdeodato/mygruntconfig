@@ -5,6 +5,7 @@ console.log(data['name']);
 console.log(data.name);
 
 console.log(data);
+console.log(douglas);
 
 foo =1;
 
