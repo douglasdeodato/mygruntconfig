@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/douglasdeodato/mygruntconfig/issues"
   },
-  "homepage": "https://github.com/douglasdeodato/mygruntconfig"
+  "homepage": "https://github.com/douglasdeodato/mygruntconfig",
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
 }
