@@ -39,11 +39,12 @@
 
 
 		//jasmine ===============================
-		var jasmine
+		var jasmine;
 		config.jasmine = jasmine = {};
+
 		jasmine.calc = {
-			scr:"calc/calc.js"
-			,options {
+			src:"calc/calc.js"
+			, options:{
 				specs: "spec/calc.spec.js"
 			}
 		};
@@ -61,7 +62,7 @@
 
 	config.watch = {
 		 scripts: {
-		 	files: ["lib/**/*.js"]
+		 	files: ["lib/**/*.js", "calc/**/*.js" , "spec/**/*.js"]
 		 	,tasks: ["dev"]
 		 }
 	}
