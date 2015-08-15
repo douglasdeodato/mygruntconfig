@@ -1,0 +1,1 @@
+{"version":3,"file":"myapp.production.js","sources":["myapp.development.js"],"names":["data","require","console","log","name","foo","module","exports"],"mappings":"AAAA,GAAIA,MAAOC,QAAQ,SAGnBC,SAAQC,IAAIH,KAAW,MACvBE,QAAQC,IAAIH,KAAKI,MAEjBF,QAAQC,IAAIH,MAEZK,IAAK,EAELC,OAAOC,SACNH,KAAK"}
