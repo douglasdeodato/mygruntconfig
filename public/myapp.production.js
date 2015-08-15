@@ -1,2 +1,2 @@
-var data=require("./test");console.log(data.name),console.log(data.name),console.log(data),foo=1,module.exports={name:"douglas deodato"};
+var data=require("./test");console.log(data.name),console.log(data.name),console.log(data),console.log(douglas),foo=1,module.exports={name:"douglas deodato"};var Calc={};Calc.add=function(a,b){return a+b};
 //# sourceMappingURL=myapp.production.js.map

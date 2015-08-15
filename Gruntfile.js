@@ -24,6 +24,7 @@
 				"public/myapp.development.js": [
 					"lib/vendor"
 					,"lib/**/*.js"
+					,"calc/**/*.js"
 				]
 			}
 		};

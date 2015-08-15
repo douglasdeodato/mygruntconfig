@@ -12,3 +12,8 @@ foo =1;
 module.exports = {
 	name:"douglas deodato"
 };
+var Calc = {};
+
+Calc.add = function (n1,n2){
+	return n1 +n2;
+};
