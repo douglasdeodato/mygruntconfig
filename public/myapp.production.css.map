@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,CAAC,CACA,MAAM,CAAE,CAAC,CACT,OAAO,CAAE,IAAI,CCFd,IAAK,CACJ,gBAAgB,CAAC,MAAM,CADxB,IAAK,CACJ,gBAAgB,CAAC,MAAM",
+"sources": ["../scss/_reset.scss","../scss/_base.scss"],
+"names": [],
+"file": "myapp.production.css"
+}

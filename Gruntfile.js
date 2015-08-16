@@ -12,6 +12,7 @@
 			,'grunt-contrib-concat'
 			,'grunt-contrib-uglify'
 			,'grunt-contrib-jasmine'
+			,'grunt-contrib-sass'
 	];
 
 		//concat ===============================
@@ -63,7 +64,7 @@
 
 	config.watch = {
 		 scripts: {
-		 	files: ["lib/**/*.js", "calc/**/*.js" , "spec/**/*.js"]
+		 	files: ["lib/**/*.js", "calc/**/*.js" , "spec/**/*.js", "scss/**/*.scss"]
 		 	,tasks: ["dev"]
 		 }
 	}
@@ -74,10 +75,33 @@
 	};
 
 
+	//Sass ===============================
+	var sass;
+	config.sass = sass = {};
+
+//production
+	sass.dist = {
+		options: { style: "compressed"}
+		, files: {
+			"public/myapp.production.css" : "scss/main.scss"
+		}
+	};
+
+	//development env.
+		sass.dev = {
+		options: { style: "expanded", lineNumber: true}
+		, files: {
+			"public/myapp.development.css" : "scss/main.scss"
+		}
+	};
+
+
+	
+
 	//Register custom tasks ===============================
 	grunt.registerTask('default',['dev']);
-	grunt.registerTask('dev',['jshint:dev','jasmine', 'concat:dev']);
-	grunt.registerTask('dist',['jshint:dist','jasmine', 'concat:dev', 'uglify']);
+	grunt.registerTask('dev',['jshint:dev','jasmine', 'concat:dev', 'sass:dev']);
+	grunt.registerTask('dist',['jshint:dist','jasmine', 'concat:dev', 'uglify' , 'sass:dist']);
 
 
 	//General setup ===============================
