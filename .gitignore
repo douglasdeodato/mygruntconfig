@@ -1,3 +1,6 @@
+bower_components
+node_modules
+
 # Numerous always-ignore extensions
 *.diff
 *.err
@@ -9,8 +12,6 @@
 *.vi
 *~
 *.sass-cache
-
-node_modules
 
 # OS or Editor folders
 .DS_Store
