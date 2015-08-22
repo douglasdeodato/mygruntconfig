@@ -1,0 +1,222 @@
+@charset "UTF-8";
+/*********************************************************************
+*
+* 	Author: @douglasdeodato
+* 	Site: lovelycss.com
+* 	Date : 07/07/2015
+* 	version: 0.1  
+*********************************************************************/
+/*********************************************************************
+*
+* 	Author: @douglasdeodato
+* 	Site: lovelycss.com
+* 	Date : 07/07/2015
+* 	version: 0.1  
+*********************************************************************/
+/*********************************************************************
+* 	=Colors 
+*
+* 	Author: @douglasdeodato
+* 	Site: lovelycss.com
+* 	Date : 07/07/2015
+* 	version: 0.1  
+*********************************************************************/
+/*********************************************************************
+*  =legend    
+*********************************************************************/
+/*********************************************************************
+* 	=Mixins 
+*
+* 	Author: @douglasdeodato
+* 	Site: lovelycss.com
+* 	Date : 07/07/2015
+* 	version: 0.1  
+*********************************************************************/
+/*********************************************************************
+* 	=Bootstrap 
+*
+* 	Author: @douglasdeodato
+* 	Site: lovelycss.com
+* 	Date : 07/07/2015
+* 	version: 0.1  
+*********************************************************************/
+/*********************************************************************
+*  =Helpers
+*********************************************************************/
+/* Clearfix semântico */
+@import url(../bower_components/bootstrap/dist/css/bootstrap-theme.min.css);
+@import url(../../fonts/stylesheet.css);
+/* line 6, ../../sass/helpers/_clearfix.scss */
+.group {
+  zoom: 1;
+}
+
+/* line 7, ../../sass/helpers/_clearfix.scss */
+.group:after {
+  clear: both;
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* line 6, ../../bower_components/reset-css/_reset.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 27, ../../bower_components/reset-css/_reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 31, ../../bower_components/reset-css/_reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 34, ../../bower_components/reset-css/_reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 37, ../../bower_components/reset-css/_reset.scss */
+blockquote, q {
+  quotes: none;
+}
+/* line 39, ../../bower_components/reset-css/_reset.scss */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 44, ../../bower_components/reset-css/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*********************************************************************
+* 	=Base 
+*
+* 	Author: @douglasdeodato
+* 	Site: lovelycss.com
+* 	Date : 07/07/2015
+* 	version: 0.1  
+*********************************************************************/
+/* line 17, ../../sass/core/_base.scss */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  color: #565a5c;
+  font: normal normal 100%/1.5em "enriqueta";
+}
+
+/* line 27, ../../sass/core/_base.scss */
+p {
+  font-size: 0.75em;
+}
+/* line 28, ../../sass/core/_base.scss */
+p a {
+  text-decoration: none;
+}
+
+/* line 33, ../../sass/core/_base.scss */
+ul {
+  list-style-type: none;
+}
+
+/* line 35, ../../sass/core/_base.scss */
+h4 {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 0.875em;
+  font-weight: bold;
+}
+
+/*********************************************************************
+*  =fonts
+*********************************************************************/
+/*********************************************************************
+* 	Media Query » screen equal or less than 1024px 
+*
+* 	Author: @douglasdeodato
+* 	Site: lovelycss.com
+* 	Date : 07/07/2015
+* 	version: 0.1  
+*********************************************************************/
+/*********************************************************************
+*
+* 	Author: @douglasdeodato
+* 	Site: lovelycss.com
+* 	Date : 07/07/2015
+* 	version: 0.1  
+*********************************************************************/
+/*********************************************************************
+* 	=Banner 
+*
+* 	Author: @douglasdeodato
+* 	Site: lovelycss.com
+* 	Date : 07/07/2015
+* 	version: 0.1  
+*********************************************************************/
+/*********************************************************************
+* 	=Content 
+*
+* 	Author: @douglasdeodato
+* 	Site: lovelycss.com
+* 	Date : 07/07/2015
+* 	version: 0.1  
+*********************************************************************/
+/*********************************************************************
+* 	=Footer 
+*
+* 	Author: @douglasdeodato
+* 	Site: lovelycss.com
+* 	Date : 07/07/2015
+* 	version: 0.1  
+*********************************************************************/
+/*********************************************************************
+* 	=Header 
+*
+* 	Author: @douglasdeodato
+* 	Site: lovelycss.com
+* 	Date : 07/07/2015
+* 	version: 0.1  
+*********************************************************************/
+/*********************************************************************
+* 	=Menu 
+*
+* 	Author: @douglasdeodato
+* 	Site: lovelycss.com
+* 	Date : 07/07/2015
+* 	version: 0.1  
+*********************************************************************/
+
+/*# sourceMappingURL=myapp.development.css.map */

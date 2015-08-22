@@ -14,6 +14,7 @@
 			,'grunt-contrib-jasmine'
 			,'grunt-contrib-sass'
 			,'grunt-contrib-handlebars'
+			,'grunt-contrib-jade'
 	];
 
 		//handlebars ===============================
@@ -85,7 +86,7 @@
 
 	config.watch = {
 		 scripts: {
-		 	files: ["lib/**/*.js", "calc/**/*.js" , "spec/**/*.js", "scss/**/*.scss"]
+		 	files: ["lib/**/*.js", "calc/**/*.js" , "spec/**/*.js", "sass/**/*.scss" ,"jade/**/*.jade"]
 		 	,tasks: ["dev"]
 		 }
 	}
@@ -100,29 +101,44 @@
 	var sass;
 	config.sass = sass = {};
 
-//production
-	sass.dist = {
-		options: { style: "compressed"}
-		, files: {
-			"public/myapp.production.css" : "scss/main.scss"
-		}
-	};
+			//production
+				sass.dist = {
+					options: { style: "compressed"}
+					, files: {
+						"public/stylesheets/myapp.production.css" : "sass/main.scss"
+					}
+				};
 
-	//development env.
-		sass.dev = {
-		options: { style: "expanded", lineNumber: true}
-		, files: {
-			"public/myapp.development.css" : "scss/main.scss"
-		}
-	};
+			//development env.
+				sass.dev = {
+				options: { style: "expanded", lineNumber: true}
+				, files: {
+					"public/stylesheets/myapp.development.css" : "sass/main.scss"
+				}
+			};
 
-
+	//Jade ===============================
+			config.jade = {
+			        compile: {
+			            options: {
+			                client: false,
+			                pretty: true
+			            },
+			            files: [ {
+			              cwd: "jade/templates",
+			              src: "**/*.jade",
+			              dest: "",
+			              expand: true,
+			              ext: ".html"
+			            } ]
+			        }
+			    }
 	
 
 	//Register custom tasks ===============================
 	grunt.registerTask('default',['dev']);
-	grunt.registerTask('dev',['jshint:dev','jasmine','handlebars', 'concat:dev', 'sass:dev']);
-	grunt.registerTask('dist',['jshint:dist','jasmine', 'handlebars', 'concat:dev', 'uglify' , 'sass:dist']);
+	grunt.registerTask('dev',['jshint:dev','jasmine','handlebars', 'concat:dev', 'jade','sass:dev']);
+	grunt.registerTask('dist',['jshint:dist','jasmine', 'handlebars', 'concat:dev', 'jade', 'uglify' , 'sass:dist']);
 
 
 	//General setup ===============================

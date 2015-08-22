@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": ";AAAA,CAAC;EACA,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,IAAI;;;;ACFd,IAAK;EACJ,gBAAgB,EAAC,MAAM;;;;AADxB,IAAK;EACJ,gBAAgB,EAAC,MAAM",
-"sources": ["../scss/_reset.scss","../scss/_base.scss"],
-"names": [],
-"file": "myapp.development.css"
-}

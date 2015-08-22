@@ -1,0 +1,42 @@
+/*********************************************************************
+*
+* 	Author: @douglasdeodato
+* 	Site: lovelycss.com
+* 	Date : 07/07/2015
+* 	version: 0.1  
+*********************************************************************/
+
+// Load all modules
+
+// helpers colours frist
+@import "helpers/help-dir";
+
+//mixins come first too
+// @import "helpers/mixins";
+
+
+// @import "core/reset";
+
+@import "../bower_components/reset-css/reset";
+
+// Vendor CSS
+
+@import "../bower_components/bootstrap/dist/css/bootstrap-theme.min.css";
+// @import "vendor/bootstrap.min";
+// @import "vendor/owl";
+
+// core CSS
+@import"core/core-dir";
+// @import "core/base";
+// @import "core/typography";
+
+// modules CSS
+@import"modules/modules-dir";
+
+
+// pages
+// @import "pages/index";
+
+
+
+
