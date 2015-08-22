@@ -1,6 +1,6 @@
 # mygruntconfig
 
-
+# grunt
  "devDependencies": {
     "grunt": "*",
     "grunt-contrib-concat": "*",
@@ -12,4 +12,16 @@
     "grunt-contrib-sass": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*"
+  }
+
+# bower
+
+  "dependencies": {
+  
+    "bootstrap": "*",
+    
+    "reset-css": "*",
+    
+    "components-font-awesome": "*"
+    
   }
