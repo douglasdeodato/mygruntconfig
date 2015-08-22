@@ -21,9 +21,9 @@
 
 // Vendor CSS
 
-@import "../bower_components/bootstrap/dist/css/bootstrap-theme.min.css";
-// @import "vendor/bootstrap.min";
-// @import "vendor/owl";
+@import "../bower_components/bootstrap/dist/css/bootstrap-theme.min";
+@import "../bower_components/bootstrap/dist/css/bootstrap.min";
+@import "../bower_components/components-font-awesome/scss/font-awesome";
 
 // core CSS
 @import"core/core-dir";

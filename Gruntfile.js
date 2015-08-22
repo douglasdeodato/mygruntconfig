@@ -2,9 +2,6 @@
 	var config = {};
 
 
-	//setup the configuration object
-	var jshint;
-
 	//all tasks that must be loaded.
 	var tasks = [
 			'grunt-contrib-jshint'
@@ -16,10 +13,12 @@
 			,'grunt-contrib-handlebars'
 			,'grunt-contrib-jade'
 			,'grunt-contrib-htmlmin'
+			,'grunt-contrib-imagemin'
 	];
 
 		//Handlebars ===============================
-
+		
+		//setup the configuration object
 		var hbs;
 		config.handlebars = hbs = {};
 
@@ -55,7 +54,7 @@
 		};
 
 
-		//uglify ===============================
+		//Uglify ===============================
 		config.uglify = {dist: {
 			options: {sourceMap:"public/myapp.production.js.map", report:"gzip"}
 			,files: {
@@ -100,7 +99,6 @@
 			 }
 		}
 
-	
 
 		//Sass ===============================
 			var sass;
@@ -159,12 +157,33 @@
 					      }
 					};	
 
+		//Image min ===============================
+
+				// var imagemin;
+				// config.imagemin = imagemin = {};
+
+				// 	imagemin.dist = {
+				// 				  options: {
+				// 		        optimizationLevel: 5,
+				// 		        progressive: true,
+				// 		      },
+				// 			dynamic: {
+				// 	        files: [{
+				// 	            expand: true,
+				// 	            cwd: 'assets/images',
+				// 	            src: ['**/*.{png,jpg,gif}'],
+				// 	            dest: 'public/images'
+				// 	        }]
+				// 	    }
+						
+					// };	
+
 	
 
 	//Register custom tasks ===============================
 	grunt.registerTask('default',['dev']);
 	grunt.registerTask('dev',['jshint:dev','jasmine','handlebars','concat:dev', 'jade','sass:dev']);
-	grunt.registerTask('dist',['jshint:dist','jasmine', 'handlebars','htmlmin', 'concat:dev', 'jade', 'uglify' , 'sass:dist']);
+	grunt.registerTask('dist',['jshint:dist','jasmine', 'handlebars','htmlmin', 'imagemin:dist','concat:dev', 'jade', 'uglify' , 'sass:dist']);
 
 
 	//General setup ===============================
