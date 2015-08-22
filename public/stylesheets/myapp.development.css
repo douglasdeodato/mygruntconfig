@@ -43,7 +43,7 @@
 /*********************************************************************
 *  =Helpers
 *********************************************************************/
-/* Clearfix semântico */
+/* Clearfix sem├óntico */
 @import url(../bower_components/bootstrap/dist/css/bootstrap-theme.min.css);
 @import url(../../fonts/stylesheet.css);
 /* line 6, ../../sass/helpers/_clearfix.scss */
@@ -164,7 +164,7 @@ h4 {
 *  =fonts
 *********************************************************************/
 /*********************************************************************
-* 	Media Query » screen equal or less than 1024px 
+* 	Media Query ┬╗ screen equal or less than 1024px 
 *
 * 	Author: @douglasdeodato
 * 	Site: lovelycss.com

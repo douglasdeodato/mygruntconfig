@@ -15,9 +15,10 @@
 			,'grunt-contrib-sass'
 			,'grunt-contrib-handlebars'
 			,'grunt-contrib-jade'
+			,'grunt-contrib-htmlmin'
 	];
 
-		//handlebars ===============================
+		//Handlebars ===============================
 
 		var hbs;
 		config.handlebars = hbs = {};
@@ -35,7 +36,8 @@
 			}
 		};	
 
-		//concat ===============================
+
+		//Concat ===============================
 
 		var concat;
 		config.concat = concat = {};
@@ -62,7 +64,7 @@
 		}}
 
 
-		//jasmine ===============================
+		//Jasmine ===============================
 		var jasmine;
 		config.jasmine = jasmine = {};
 
@@ -73,72 +75,96 @@
 			}
 		};
 
-
-	config.jshint = jshint ={};
-
-
-	jshint.dist = {
-	options: {jshintrc: ".jshintrc"},
-	files: {all: ["lib/main.js","lib/test.js"]}
-	};
-
-	//Watch ===============================
-
-	config.watch = {
-		 scripts: {
-		 	files: ["lib/**/*.js", "calc/**/*.js" , "spec/**/*.js", "sass/**/*.scss" ,"jade/**/*.jade"]
-		 	,tasks: ["dev"]
-		 }
-	}
-
-	jshint.dev = {
-	options: {jshintrc: ".jshintrc.dev"},
-	files: {all: ["lib/main.js","lib/test.js"]}
-	};
+		//Jshint ===============================	
+			var jshint;
+			config.jshint = jshint ={};
 
 
-	//Sass ===============================
-	var sass;
-	config.sass = sass = {};
+			jshint.dist = {
+				options: {jshintrc: ".jshintrc"},
+				files: {all: ["lib/main.js","lib/test.js"]}
+			};
 
-			//production
-				sass.dist = {
-					options: { style: "compressed"}
+			jshint.dev = {
+				options: {jshintrc: ".jshintrc.dev"},
+				files: {all: ["lib/main.js","lib/test.js"]}
+			};
+
+
+		//Watch ===============================
+
+		config.watch = {
+			 scripts: {
+			 	files: ["lib/**/*.js", "calc/**/*.js" , "spec/**/*.js", "sass/**/*.scss" ,"jade/**/*.jade"]
+			 	,tasks: ["dev"]
+			 }
+		}
+
+	
+
+		//Sass ===============================
+			var sass;
+			config.sass = sass = {};
+
+				//production
+					sass.dist = {
+						options: { style: "compressed"}
+						, files: {
+							"public/stylesheets/myapp.production.css" : "sass/main.scss"
+						}
+					};
+
+				//development env.
+					sass.dev = {
+					options: { style: "expanded", lineNumber: true}
 					, files: {
-						"public/stylesheets/myapp.production.css" : "sass/main.scss"
+						"public/stylesheets/myapp.development.css" : "sass/main.scss"
 					}
 				};
 
-			//development env.
-				sass.dev = {
-				options: { style: "expanded", lineNumber: true}
-				, files: {
-					"public/stylesheets/myapp.development.css" : "sass/main.scss"
-				}
-			};
+		//Jade ===============================
+				config.jade = {
+				        compile: {
+				            options: {
+				                client: false,
+				                pretty: true
+				            },
+				            files: [ {
+				              cwd: "jade/templates",
+				              src: "**/*.jade",
+				              dest: "jade/compiled-templates",
+				              expand: true,
+				              ext: ".html"
+				            } ]
+				        }
+				    }
 
-	//Jade ===============================
-			config.jade = {
-			        compile: {
-			            options: {
-			                client: false,
-			                pretty: true
-			            },
-			            files: [ {
-			              cwd: "jade/templates",
-			              src: "**/*.jade",
-			              dest: "",
-			              expand: true,
-			              ext: ".html"
-			            } ]
-			        }
-			    }
+
+		//Html Minifier ===============================
+
+				var htmlmin;
+				config.htmlmin = htmlmin = {};
+
+					htmlmin.dist = {
+						options: {
+						  collapseWhitespace: true,
+				          conservativeCollapse: true,
+				          // minifyCSS: true,
+				          // minifyJS: true,
+				          removeAttributeQuotes: true,
+				          removeComments: true
+						},
+						files: {                                   
+					        'layout.min.html': 'jade/compiled-templates/layout.html'
+					      }
+					};	
+
 	
 
 	//Register custom tasks ===============================
 	grunt.registerTask('default',['dev']);
-	grunt.registerTask('dev',['jshint:dev','jasmine','handlebars', 'concat:dev', 'jade','sass:dev']);
-	grunt.registerTask('dist',['jshint:dist','jasmine', 'handlebars', 'concat:dev', 'jade', 'uglify' , 'sass:dist']);
+	grunt.registerTask('dev',['jshint:dev','jasmine','handlebars','concat:dev', 'jade','sass:dev']);
+	grunt.registerTask('dist',['jshint:dist','jasmine', 'handlebars','htmlmin', 'concat:dev', 'jade', 'uglify' , 'sass:dist']);
 
 
 	//General setup ===============================
