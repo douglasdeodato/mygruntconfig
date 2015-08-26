@@ -159,31 +159,22 @@
 
 		//Image min ===============================
 
-				// var imagemin;
-				// config.imagemin = imagemin = {};
+				var imagemin;
+				config.imagemin = imagemin = {};
 
-				// 	imagemin.dist = {
-				// 				  options: {
-				// 		        optimizationLevel: 5,
-				// 		        progressive: true,
-				// 		      },
-				// 			dynamic: {
-				// 	        files: [{
-				// 	            expand: true,
-				// 	            cwd: 'assets/images',
-				// 	            src: ['**/*.{png,jpg,gif}'],
-				// 	            dest: 'public/images'
-				// 	        }]
-				// 	    }
-						
-					// };	
+					imagemin.dev = {
+						options: { optimizationLevel: 5}
+						,src: 'images/austeja.jpg'
+						,dest: 'public/images/austeja-1.jpg'
+					};	
+
 
 	
 
 	//Register custom tasks ===============================
 	grunt.registerTask('default',['dev']);
-	grunt.registerTask('dev',['jshint:dev','jasmine','handlebars','concat:dev', 'jade','sass:dev']);
-	grunt.registerTask('dist',['jshint:dist','jasmine', 'handlebars','htmlmin', 'imagemin:dist','concat:dev', 'jade', 'uglify' , 'sass:dist']);
+	grunt.registerTask('dev',['jshint:dev','jasmine','handlebars','concat:dev', 'imagemin:dev', 'jade','sass:dev']);
+	grunt.registerTask('dist',['jshint:dist','jasmine', 'handlebars','htmlmin', 'imagemin:dev','concat:dev', 'jade', 'uglify' , 'sass:dist']);
 
 
 	//General setup ===============================
