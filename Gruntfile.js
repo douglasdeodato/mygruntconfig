@@ -14,6 +14,7 @@
 			,'grunt-contrib-jade'
 			,'grunt-contrib-htmlmin'
 			,'grunt-contrib-imagemin'
+			,'grunt-spritesmith'
 	];
 
 		//Handlebars ===============================
@@ -175,12 +176,25 @@
 					        }]
 					 };	
 
+
+	 //Sprite ===============================
+		var sprite;
+		config.sprite = sprite = {};
+		
+		 
+		  sprite.dist ={
+		        src: 'public/images/*.jpg',
+				dest: 'public/images/sprite/spritesheet.png',
+				destCss: 'sass/helpers/_sprite.scss'
+		    
+		  };	
+
 	
 
 	//Register custom tasks ===============================
 	grunt.registerTask('default',['dev']);
 	grunt.registerTask('dev',['jshint:dev','jasmine','handlebars','concat:dev', 'jade','sass:dev']);
-	grunt.registerTask('dist',['jshint:dist','jasmine', 'handlebars','htmlmin','concat:dev', 'jade', 'uglify' , 'sass:dist']);
+	grunt.registerTask('dist',['jshint:dist','jasmine', 'handlebars','htmlmin','sprite','concat:dev', 'jade', 'uglify' , 'sass:dist']);
 
 	//grunt.registerTask('dev',['imagemin']);
 
