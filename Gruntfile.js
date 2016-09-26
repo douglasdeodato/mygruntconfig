@@ -8,6 +8,7 @@ module.exports = function(grunt) {
     distFolder: 'public/stylesheets/myapp.production.css',
     devFolder: 'public/stylesheets/myapp.development.css',
     sassFolder: 'scss/**/*.scss',
+    serverPort: 8000
   };
 
 
@@ -181,12 +182,22 @@ module.exports = function(grunt) {
 
   };
 
+  //grunt serve ===============================
+  config.connect = {
+    server: {
+      options: {
+        livereload: true,
+        port: "<%= src.serverPort %>"
+      }
+    }
+  };
 
 
   //Register custom tasks ===============================
   grunt.registerTask('default', ['dev']);
   grunt.registerTask('dev', ['jshint:dev', 'jasmine', 'handlebars', 'concat:dev', 'jade', 'sass:dev']);
   grunt.registerTask('dist', ['jshint:dist', 'jasmine', 'handlebars', 'htmlmin', 'sprite', 'concat:dev', 'jade', 'uglify', 'sass:dist']);
+  grunt.registerTask('serve', ['connect:server', 'watch']);
   require('time-grunt')(grunt);
   require('load-grunt-tasks')(grunt, {
     scope: 'devDependencies'
