@@ -8,6 +8,11 @@ module.exports = function(grunt) {
     distFolder: 'public/stylesheets/myapp.production.css',
     devFolder: 'public/stylesheets/myapp.development.css',
     sassFolder: 'scss/**/*.scss',
+    imageminCwd: 'public/images/',
+    imageminDest: 'public/images/min',
+    spriteCssFolder: 'scss/helpers/_sprite.scss',
+    spriteDestImg: 'public/images/sprite/spritesheet.png',
+    spriteSrc: 'public/images/min/*.{png,jpg,gif}',
     serverPort: 8000
   };
 
@@ -172,9 +177,9 @@ module.exports = function(grunt) {
 
     files: [{
       expand: true,
-      cwd: 'public/images/',
+      cwd: '<%= src.imageminCwd %>',
       src: ['**/*.{png,jpg,gif}'],
-      dest: 'public/images/min'
+      dest: '<%= src.imageminDest %>'
     }]
   };
 
@@ -183,11 +188,10 @@ module.exports = function(grunt) {
   var sprite;
   config.sprite = sprite = {};
 
-
   sprite.dist = {
-    src: 'public/images/*.jpg',
-    dest: 'public/images/sprite/spritesheet.png',
-    destCss: 'sass/helpers/_sprite.scss'
+    src: '<%= src.spriteSrc %>',
+    dest: '<%= src.spriteDestImg %>',
+    destCss: '<%= src.spriteCssFolder %>'
 
   };
 
