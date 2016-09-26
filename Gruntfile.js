@@ -101,7 +101,7 @@ module.exports = function(grunt) {
   sass.dist = {
     options: { style: "compressed" },
     files: {
-      "<%= src.distFolder %>": "sass/main.scss"
+      "<%= src.distFolder %>": "<%= src.sassMain %>"
     }
   };
 
