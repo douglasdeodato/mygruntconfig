@@ -40,7 +40,11 @@ module.exports = function(grunt) {
   concat.dev = {
     files: {
       "public/myapp.development.js": [
-        "lib/vendor", "node_modules/handlebars-runtime/handlebars.runtime.js", "tmp/templates.js", "lib/**/*.js", "calc/**/*.js"
+        "lib/vendor",
+        "node_modules/handlebars-runtime/handlebars.runtime.js",
+        "tmp/templates.js",
+        "lib/**/*.js",
+        "calc/**/*.js"
       ]
     }
   };
@@ -88,7 +92,12 @@ module.exports = function(grunt) {
 
   config.watch = {
     scripts: {
-      files: ["lib/**/*.js", "calc/**/*.js", "spec/**/*.js", "sass/**/*.scss", "jade/**/*.jade"],
+      files: ["lib/**/*.js",
+        "calc/**/*.js",
+        "spec/**/*.js",
+        "<%= src.sassFolder %>",
+        "jade/**/*.jade"
+      ],
       tasks: ["dev"]
     }
   }
