@@ -3,7 +3,7 @@
 * 	Author: @douglasdeodato
 * 	Site: lovelycss.com
 * 	Date : 07/07/2015
-* 	version: 0.1  
+* 	version: 0.1
 *********************************************************************/
 
 // Load all modules
@@ -17,13 +17,13 @@
 
 // @import "core/reset";
 
-@import "../bower_components/reset-css/reset";
+//@import "../bower_components/reset-css/reset";
 
 // Vendor CSS
 
-@import "../bower_components/bootstrap/dist/css/bootstrap-theme.min";
-@import "../bower_components/bootstrap/dist/css/bootstrap.min";
-@import "../bower_components/components-font-awesome/scss/font-awesome";
+//@import "../bower_components/bootstrap/dist/css/bootstrap-theme.min";
+//@import "../bower_components/bootstrap/dist/css/bootstrap.min";
+//@import "../bower_components/components-font-awesome/scss/font-awesome";
 
 // core CSS
 @import"core/core-dir";

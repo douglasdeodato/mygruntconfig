@@ -2,23 +2,8 @@
 	var config = {};
 
 
-	//all tasks that must be loaded.
-	var tasks = [
-			'grunt-contrib-jshint'
-			,'grunt-contrib-watch'
-			,'grunt-contrib-concat'
-			,'grunt-contrib-uglify'
-			,'grunt-contrib-jasmine'
-			,'grunt-contrib-sass'
-			,'grunt-contrib-handlebars'
-			,'grunt-contrib-jade'
-			,'grunt-contrib-htmlmin'
-			,'grunt-contrib-imagemin'
-			,'grunt-spritesmith'
-	];
-
 		//Handlebars ===============================
-		
+
 		//setup the configuration object
 		var hbs;
 		config.handlebars = hbs = {};
@@ -34,7 +19,7 @@
 			,files: {
 				"tmp/templates.js": "templates/**/*.hbs"
 			}
-		};	
+		};
 
 
 		//Concat ===============================
@@ -75,7 +60,7 @@
 			}
 		};
 
-		//Jshint ===============================	
+		//Jshint ===============================
 			var jshint;
 			config.jshint = jshint ={};
 
@@ -153,10 +138,10 @@
 				          removeAttributeQuotes: true,
 				          removeComments: true
 						},
-						files: {                                   
+						files: {
 					        'layout.min.html': 'jade/compiled-templates/layout.html'
 					      }
-					};	
+					};
 
 	//Image min ===============================
 				var imagemin;
@@ -167,40 +152,42 @@
 						          optimizationLevel: 5,
 						          progressive: true,
 						      },
-						
+
 					        files: [{
 					            expand: true,
 					            cwd: 'public/images/',
 					            src: ['**/*.{png,jpg,gif}'],
 					            dest: 'public/images/min'
 					        }]
-					 };	
+					 };
 
 
 	 //Sprite ===============================
 		var sprite;
 		config.sprite = sprite = {};
-		
-		 
+
+
 		  sprite.dist ={
 		        src: 'public/images/*.jpg',
 				dest: 'public/images/sprite/spritesheet.png',
 				destCss: 'sass/helpers/_sprite.scss'
-		    
-		  };	
 
-	
+		  };
+
+
 
 	//Register custom tasks ===============================
 	grunt.registerTask('default',['dev']);
 	grunt.registerTask('dev',['jshint:dev','jasmine','handlebars','concat:dev', 'jade','sass:dev']);
 	grunt.registerTask('dist',['jshint:dist','jasmine', 'handlebars','htmlmin','sprite','concat:dev', 'jade', 'uglify' , 'sass:dist']);
-
+	require('time-grunt')(grunt);
+    require('load-grunt-tasks')(grunt, {
+        scope: 'devDependencies'
+    });
 	//grunt.registerTask('dev',['imagemin']);
 
 
 	//General setup ===============================
 	grunt.initConfig(config);
-	tasks.forEach(grunt.loadNpmTasks);
 
 };
