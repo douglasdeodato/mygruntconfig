@@ -1,6 +1,15 @@
 module.exports = function(grunt) {
   var config = {};
 
+  //src ===============================
+  var src;
+  config.src = src = {
+    sassMain: 'scss/main.scss',
+    distFolder: 'public/stylesheets/myapp.production.css',
+    devFolder: 'public/stylesheets/myapp.development.css',
+    sassFolder: 'scss/**/*.scss',
+  };
+
 
   //Handlebars ===============================
 
@@ -92,7 +101,7 @@ module.exports = function(grunt) {
   sass.dist = {
     options: { style: "compressed" },
     files: {
-      "public/stylesheets/myapp.production.css": "sass/main.scss"
+      "<%= src.distFolder %>": "sass/main.scss"
     }
   };
 
@@ -100,7 +109,7 @@ module.exports = function(grunt) {
   sass.dev = {
     options: { style: "expanded", lineNumber: true },
     files: {
-      "public/stylesheets/myapp.development.css": "sass/main.scss"
+      "<%= src.devFolder %>": "<%= src.sassMain %>"
     }
   };
 
