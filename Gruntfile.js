@@ -1,193 +1,191 @@
-	module.exports = function  (grunt) {
-	var config = {};
+module.exports = function(grunt) {
+  var config = {};
 
 
-		//Handlebars ===============================
+  //Handlebars ===============================
 
-		//setup the configuration object
-		var hbs;
-		config.handlebars = hbs = {};
+  //setup the configuration object
+  var hbs;
+  config.handlebars = hbs = {};
 
-		hbs.dist = {
-			options: {
-				namespace: "myapp.templates"
-				,processName: function(path) {
-					console.log("=>", path);
-					return path.replace(/^templates\/(.*?)\.hbs$/, "$1");
-				}
-			}
-			,files: {
-				"tmp/templates.js": "templates/**/*.hbs"
-			}
-		};
-
-
-		//Concat ===============================
-
-		var concat;
-		config.concat = concat = {};
-
-		concat.dev = {
-			files: {
-				"public/myapp.development.js": [
-					"lib/vendor"
-					,"node_modules/handlebars-runtime/handlebars.runtime.js"
-					,"tmp/templates.js"
-					,"lib/**/*.js"
-					,"calc/**/*.js"
-				]
-			}
-		};
+  hbs.dist = {
+    options: {
+      namespace: "myapp.templates",
+      processName: function(path) {
+        console.log("=>", path);
+        return path.replace(/^templates\/(.*?)\.hbs$/, "$1");
+      }
+    },
+    files: {
+      "tmp/templates.js": "templates/**/*.hbs"
+    }
+  };
 
 
-		//Uglify ===============================
-		config.uglify = {dist: {
-			options: {sourceMap:"public/myapp.production.js.map", report:"gzip"}
-			,files: {
-				"public/myapp.production.js": ["public/myapp.development.js"]
-			}
-		}}
+  //Concat ===============================
+
+  var concat;
+  config.concat = concat = {};
+
+  concat.dev = {
+    files: {
+      "public/myapp.development.js": [
+        "lib/vendor", "node_modules/handlebars-runtime/handlebars.runtime.js", "tmp/templates.js", "lib/**/*.js", "calc/**/*.js"
+      ]
+    }
+  };
 
 
-		//Jasmine ===============================
-		var jasmine;
-		config.jasmine = jasmine = {};
-
-		jasmine.calc = {
-			src:"calc/calc.js"
-			, options:{
-				specs: "spec/calc.spec.js"
-			}
-		};
-
-		//Jshint ===============================
-			var jshint;
-			config.jshint = jshint ={};
+  //Uglify ===============================
+  config.uglify = {
+    dist: {
+      options: { sourceMap: "public/myapp.production.js.map", report: "gzip" },
+      files: {
+        "public/myapp.production.js": ["public/myapp.development.js"]
+      }
+    }
+  }
 
 
-			jshint.dist = {
-				options: {jshintrc: ".jshintrc"},
-				files: {all: ["lib/main.js","lib/test.js"]}
-			};
+  //Jasmine ===============================
+  var jasmine;
+  config.jasmine = jasmine = {};
 
-			jshint.dev = {
-				options: {jshintrc: ".jshintrc.dev"},
-				files: {all: ["lib/main.js","lib/test.js"]}
-			};
+  jasmine.calc = {
+    src: "calc/calc.js",
+    options: {
+      specs: "spec/calc.spec.js"
+    }
+  };
 
-
-		//Watch ===============================
-
-		config.watch = {
-			 scripts: {
-			 	files: ["lib/**/*.js", "calc/**/*.js" , "spec/**/*.js", "sass/**/*.scss" ,"jade/**/*.jade"]
-			 	,tasks: ["dev"]
-			 }
-		}
+  //Jshint ===============================
+  var jshint;
+  config.jshint = jshint = {};
 
 
-		//Sass ===============================
-			var sass;
-			config.sass = sass = {};
+  jshint.dist = {
+    options: { jshintrc: ".jshintrc" },
+    files: { all: ["lib/main.js", "lib/test.js"] }
+  };
 
-				//production
-					sass.dist = {
-						options: { style: "compressed"}
-						, files: {
-							"public/stylesheets/myapp.production.css" : "sass/main.scss"
-						}
-					};
-
-				//development env.
-					sass.dev = {
-					options: { style: "expanded", lineNumber: true}
-					, files: {
-						"public/stylesheets/myapp.development.css" : "sass/main.scss"
-					}
-				};
-
-		//Jade ===============================
-				config.jade = {
-				        compile: {
-				            options: {
-				                client: false,
-				                pretty: true
-				            },
-				            files: [ {
-				              cwd: "jade/templates",
-				              src: "**/*.jade",
-				              dest: "jade/compiled-templates",
-				              expand: true,
-				              ext: ".html"
-				            } ]
-				        }
-				    }
+  jshint.dev = {
+    options: { jshintrc: ".jshintrc.dev" },
+    files: { all: ["lib/main.js", "lib/test.js"] }
+  };
 
 
-		//Html Minifier ===============================
+  //Watch ===============================
 
-				var htmlmin;
-				config.htmlmin = htmlmin = {};
-
-					htmlmin.dist = {
-						options: {
-						  collapseWhitespace: true,
-				          conservativeCollapse: true,
-				          // minifyCSS: true,
-				          // minifyJS: true,
-				          removeAttributeQuotes: true,
-				          removeComments: true
-						},
-						files: {
-					        'layout.min.html': 'jade/compiled-templates/layout.html'
-					      }
-					};
-
-	//Image min ===============================
-				var imagemin;
-				config.imagemin = imagemin = {};
-
-					imagemin.dist = {
-								  options: {
-						          optimizationLevel: 5,
-						          progressive: true,
-						      },
-
-					        files: [{
-					            expand: true,
-					            cwd: 'public/images/',
-					            src: ['**/*.{png,jpg,gif}'],
-					            dest: 'public/images/min'
-					        }]
-					 };
+  config.watch = {
+    scripts: {
+      files: ["lib/**/*.js", "calc/**/*.js", "spec/**/*.js", "sass/**/*.scss", "jade/**/*.jade"],
+      tasks: ["dev"]
+    }
+  }
 
 
-	 //Sprite ===============================
-		var sprite;
-		config.sprite = sprite = {};
+  //Sass ===============================
+  var sass;
+  config.sass = sass = {};
+
+  //production
+  sass.dist = {
+    options: { style: "compressed" },
+    files: {
+      "public/stylesheets/myapp.production.css": "sass/main.scss"
+    }
+  };
+
+  //development env.
+  sass.dev = {
+    options: { style: "expanded", lineNumber: true },
+    files: {
+      "public/stylesheets/myapp.development.css": "sass/main.scss"
+    }
+  };
+
+  //Jade ===============================
+  config.jade = {
+    compile: {
+      options: {
+        client: false,
+        pretty: true
+      },
+      files: [{
+        cwd: "jade/templates",
+        src: "**/*.jade",
+        dest: "jade/compiled-templates",
+        expand: true,
+        ext: ".html"
+      }]
+    }
+  }
 
 
-		  sprite.dist ={
-		        src: 'public/images/*.jpg',
-				dest: 'public/images/sprite/spritesheet.png',
-				destCss: 'sass/helpers/_sprite.scss'
+  //Html Minifier ===============================
 
-		  };
+  var htmlmin;
+  config.htmlmin = htmlmin = {};
+
+  htmlmin.dist = {
+    options: {
+      collapseWhitespace: true,
+      conservativeCollapse: true,
+      // minifyCSS: true,
+      // minifyJS: true,
+      removeAttributeQuotes: true,
+      removeComments: true
+    },
+    files: {
+      'layout.min.html': 'jade/compiled-templates/layout.html'
+    }
+  };
+
+  //Image min ===============================
+  var imagemin;
+  config.imagemin = imagemin = {};
+
+  imagemin.dist = {
+    options: {
+      optimizationLevel: 5,
+      progressive: true,
+    },
+
+    files: [{
+      expand: true,
+      cwd: 'public/images/',
+      src: ['**/*.{png,jpg,gif}'],
+      dest: 'public/images/min'
+    }]
+  };
+
+
+  //Sprite ===============================
+  var sprite;
+  config.sprite = sprite = {};
+
+
+  sprite.dist = {
+    src: 'public/images/*.jpg',
+    dest: 'public/images/sprite/spritesheet.png',
+    destCss: 'sass/helpers/_sprite.scss'
+
+  };
 
 
 
-	//Register custom tasks ===============================
-	grunt.registerTask('default',['dev']);
-	grunt.registerTask('dev',['jshint:dev','jasmine','handlebars','concat:dev', 'jade','sass:dev']);
-	grunt.registerTask('dist',['jshint:dist','jasmine', 'handlebars','htmlmin','sprite','concat:dev', 'jade', 'uglify' , 'sass:dist']);
-	require('time-grunt')(grunt);
-    require('load-grunt-tasks')(grunt, {
-        scope: 'devDependencies'
-    });
-	//grunt.registerTask('dev',['imagemin']);
+  //Register custom tasks ===============================
+  grunt.registerTask('default', ['dev']);
+  grunt.registerTask('dev', ['jshint:dev', 'jasmine', 'handlebars', 'concat:dev', 'jade', 'sass:dev']);
+  grunt.registerTask('dist', ['jshint:dist', 'jasmine', 'handlebars', 'htmlmin', 'sprite', 'concat:dev', 'jade', 'uglify', 'sass:dist']);
+  require('time-grunt')(grunt);
+  require('load-grunt-tasks')(grunt, {
+    scope: 'devDependencies'
+  });
+  //grunt.registerTask('dev',['imagemin']);
 
 
-	//General setup ===============================
-	grunt.initConfig(config);
+  //General setup ===============================
+  grunt.initConfig(config);
 
 };
