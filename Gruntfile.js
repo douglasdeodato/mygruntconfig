@@ -18,25 +18,23 @@ module.exports = function (grunt) {
     serverPort: 8000
   };
 
-
   //Handlebars ===============================
 
-  var hbs;
-  config.handlebars = hbs = {};
+  // var hbs;
+  // config.handlebars = hbs = {};
 
-  hbs.dist = {
-    options: {
-      namespace: "myapp.templates",
-      processName: function (path) {
-        console.log("=>", path);
-        return path.replace(/^templates\/(.*?)\.hbs$/, "$1");
-      }
-    },
-    files: {
-      "tmp/templates.js": "templates/**/*.hbs"
-    }
-  };
-
+  // hbs.dist = {
+  //   options: {
+  //     namespace: "myapp.templates",
+  //     processName: function (path) {
+  //       console.log("=>", path);
+  //       return path.replace(/^templates\/(.*?)\.hbs$/, "$1");
+  //     }
+  //   },
+  //   files: {
+  //     "tmp/templates.js": "templates/**/*.hbs"
+  //   }
+  // };
 
   //Concat ===============================
 
@@ -46,18 +44,14 @@ module.exports = function (grunt) {
   concat.dev = {
     files: {
       "public/myapp.development.js": [
-        "lib/vendor",
-        "node_modules/handlebars-runtime/handlebars.runtime.js",
-        "tmp/templates.js",
-        "lib/**/*.js",
-        "calc/**/*.js"
+        "lib/vendor","node_modules/handlebars-runtime/handlebars.runtime.js","tmp/templates.js","lib/**/*.js","calc/**/*.js"
       ]
     }
   };
 
 
   //Uglify ===============================
-  
+
   config.uglify = {
     dist: {
       options: { sourceMap: "public/myapp.production.js.map", report: "gzip" },
@@ -66,7 +60,6 @@ module.exports = function (grunt) {
       }
     }
   }
-
 
   //Jasmine ===============================
 
@@ -96,28 +89,45 @@ module.exports = function (grunt) {
     files: { all: ["lib/main.js", "lib/test.js"] }
   };
 
-
   //Watch ===============================
 
   config.watch = {
     scripts: {
-      files: ["<%= src.libFolder %>",
-        "<%= src.sassFolder %>",
-        "jade/**/*.jade"
-      ],
-      tasks: ["dev"]
+      files: ["<%= src.libFolder %>", "<%= src.sassFolder %>", "jade/**/*.jade"],
+      tasks: ["dev", "sass:dist"]
+      //,tasks: ["dev",'sass:dist']
     }
   }
 
+    //Jade ===============================
+
+    config.jade = {
+      compile: {
+        options: {
+          client: false,
+          pretty: true
+        },
+        files: [{
+          cwd: "jade/templates",
+          src: "**/*.jade",
+          dest: "jade/compiled-templates",
+          expand: true,
+          ext: ".html"
+        }]
+      }
+    }
 
   //Sass ===============================
-  
+
   var sass;
   config.sass = sass = {};
 
   //production
   sass.dist = {
-    options: { style: "compressed" },
+    options: {
+      style: "compressed",//noCache: true, //sourceMap: "none",
+      update: true
+    },
     files: {
       "<%= src.distFolder %>": "<%= src.sassMain %>"
     }
@@ -125,29 +135,13 @@ module.exports = function (grunt) {
 
   //development env.
   sass.dev = {
-    options: { style: "expanded", lineNumber: true },
+    options: {
+      style: "expanded",//lineNumber: true,
+    },
     files: {
       "<%= src.devFolder %>": "<%= src.sassMain %>"
     }
   };
-
-  //Jade ===============================
-
-  config.jade = {
-    compile: {
-      options: {
-        client: false,
-        pretty: true
-      },
-      files: [{
-        cwd: "jade/templates",
-        src: "**/*.jade",
-        dest: "jade/compiled-templates",
-        expand: true,
-        ext: ".html"
-      }]
-    }
-  }
 
   //ScssLint ===============================
 
