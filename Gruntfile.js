@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   var config = {};
 
   //src ===============================
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
   hbs.dist = {
     options: {
       namespace: "myapp.templates",
-      processName: function(path) {
+      processName: function (path) {
         console.log("=>", path);
         return path.replace(/^templates\/(.*?)\.hbs$/, "$1");
       }
