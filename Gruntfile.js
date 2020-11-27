@@ -7,6 +7,7 @@ module.exports = function(grunt) {
     sassMain: 'scss/main.scss',
     distFolder: 'public/stylesheets/myapp.production.css',
     devFolder: 'public/stylesheets/myapp.development.css',
+    libFolder: 'lib/**/*.js',
     sassFolder: 'scss/**/*.scss',
     imageminCwd: 'public/images/',
     imageminDest: 'public/images/min',
@@ -97,9 +98,7 @@ module.exports = function(grunt) {
 
   config.watch = {
     scripts: {
-      files: ["lib/**/*.js",
-        "calc/**/*.js",
-        "spec/**/*.js",
+      files: ["<%= src.libFolder %>",
         "<%= src.sassFolder %>",
         "jade/**/*.jade"
       ],
