@@ -2,6 +2,7 @@ module.exports = function (grunt) {
   var config = {};
 
   //src ===============================
+
   var src;
   config.src = src = {
     sassMain: 'scss/main.scss',
@@ -20,7 +21,6 @@ module.exports = function (grunt) {
 
   //Handlebars ===============================
 
-  //setup the configuration object
   var hbs;
   config.handlebars = hbs = {};
 
@@ -57,6 +57,7 @@ module.exports = function (grunt) {
 
 
   //Uglify ===============================
+  
   config.uglify = {
     dist: {
       options: { sourceMap: "public/myapp.production.js.map", report: "gzip" },
@@ -68,6 +69,7 @@ module.exports = function (grunt) {
 
 
   //Jasmine ===============================
+
   var jasmine;
   config.jasmine = jasmine = {};
 
@@ -79,6 +81,7 @@ module.exports = function (grunt) {
   };
 
   //Jshint ===============================
+
   var jshint;
   config.jshint = jshint = {};
 
@@ -108,6 +111,7 @@ module.exports = function (grunt) {
 
 
   //Sass ===============================
+  
   var sass;
   config.sass = sass = {};
 
@@ -128,6 +132,7 @@ module.exports = function (grunt) {
   };
 
   //Jade ===============================
+
   config.jade = {
     compile: {
       options: {
@@ -144,6 +149,24 @@ module.exports = function (grunt) {
     }
   }
 
+  //ScssLint ===============================
+
+  var scsslint;
+  config.scsslint = scsslint = {
+    allFiles: [
+      'scss/core/_base.scss',
+    ],
+    options: {
+      config: 'scss/.scss-lint.yml',
+      reporterOutput: '.tmp/scss-lint-report.xml',
+      colorizeOutput: true,
+      compact: false,
+      exclude: [
+        'scss/helpers/**/*.scss', 'scss/modules/**/*.scss',
+        'scss/pages/**/*.scss', 'scss/vendor/**/*.scss'
+      ]
+    }
+  };
 
   //Html Minifier ===============================
 
@@ -165,6 +188,7 @@ module.exports = function (grunt) {
   };
 
   //Image min ===============================
+
   var imagemin;
   config.imagemin = imagemin = {};
 
@@ -184,6 +208,7 @@ module.exports = function (grunt) {
 
 
   //Sprite ===============================
+
   var sprite;
   config.sprite = sprite = {};
 
@@ -195,6 +220,7 @@ module.exports = function (grunt) {
   };
 
   //grunt serve ===============================
+
   config.connect = {
     server: {
       options: {
